@@ -1,0 +1,108 @@
+object DmLembrete: TDmLembrete
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 251
+  Width = 144
+  object dxAlertWindowManager1: TdxAlertWindowManager
+    LookAndFeel.NativeStyle = False
+    OptionsAnimate.AlphaBlendValue = 255
+    OptionsAnimate.HidingAnimation = awaMove
+    OptionsAnimate.HidingAnimationDirection = awmdDown
+    OptionsAnimate.HidingAnimationTime = 500
+    OptionsAnimate.ShowingAnimation = awaMove
+    OptionsAnimate.ShowingAnimationDirection = awmdUp
+    OptionsAnimate.ShowingAnimationTime = 250
+    OptionsBehavior.DisplayTime = 20000
+    OptionsButtons.Buttons = <>
+    OptionsCaptionButtons.PopupMenu = PopupMenu1
+    OptionsMessage.Caption.Font.Charset = DEFAULT_CHARSET
+    OptionsMessage.Caption.Font.Color = clWindowText
+    OptionsMessage.Caption.Font.Height = -13
+    OptionsMessage.Caption.Font.Name = 'Tahoma'
+    OptionsMessage.Caption.Font.Style = [fsBold]
+    OptionsMessage.Text.Font.Charset = DEFAULT_CHARSET
+    OptionsMessage.Text.Font.Color = clWindowText
+    OptionsMessage.Text.Font.Height = -11
+    OptionsMessage.Text.Font.Name = 'Tahoma'
+    OptionsMessage.Text.Font.Style = []
+    OptionsNavigationPanel.Font.Charset = DEFAULT_CHARSET
+    OptionsNavigationPanel.Font.Color = clWindowText
+    OptionsNavigationPanel.Font.Height = -11
+    OptionsNavigationPanel.Font.Name = 'Tahoma'
+    OptionsNavigationPanel.Font.Style = []
+    OptionsSize.MinHeight = 75
+    OptionsSize.MinWidth = 150
+    WindowMaxCount = 1
+    OnClick = dxAlertWindowManager1Click
+    Left = 56
+    Top = 80
+    PixelsPerInch = 96
+  end
+  object Timer1: TTimer
+    Interval = 30000
+    OnTimer = Timer1Timer
+    Left = 56
+    Top = 24
+  end
+  object PopupMenu1: TPopupMenu
+    Images = cxImageList1
+    Left = 56
+    Top = 136
+    object Registrarhoras1: TMenuItem
+      Caption = 'Registrar horas'
+      ImageIndex = 0
+      OnClick = Registrarhoras1Click
+    end
+    object Pararlembretes1: TMenuItem
+      Caption = 'Parar lembretes'
+      ImageIndex = 1
+      OnClick = Pararlembretes1Click
+    end
+  end
+  object cxImageList1: TcxImageList
+    SourceDPI = 96
+    FormatVersion = 1
+    DesignInfo = 12582968
+    ImageInfo = <
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000000B744558745469746C6500536176653BF9E8F9090000020349444154
+          785E7D52316B145110FEDEE6EE9A03EF2E57284A6C6DAC42C0262185829D0A36
+          16820AFE010BADC47F60AB2022585A588875B01041822158D858081204956872
+          DC5DD6DD3733CF99D93DD713CCC0F7BEF776E7FB66E6ED0654912982633EFCFC
+          9F67A2603B2CAC9DBFB2810CEB4B274EE1E4D271B0303832A24450A94C113112
+          2846ECED8F301A7DB59CD76F379E9F6D9901425A5F3DB38C4F9FC7B87BE70690
+          60E1E49C80BC886049B87EF33656964F6373EBFD1A8096190466017352B0ABA6
+          BF22C4D5C9C5972E5CD632010F1F3F0553C4CECE17088B8F9ED99292B898884C
+          EFE2548B270711D942867E7F114717BB9E0308582A83962D2C6EE0EE2925EFA6
+          245671899205ED561B9D4EA77EC7CA6D887063904CCCE29735C923BEEF4F91C4
+          A771DC7FF008C7865DEF88896B23FA6310BC03226FEFEAB55B9A203E63823143
+          5490445C3883D05F23F8FCC228F26F180C06B3CB730059BD57866F20229EDF18
+          D42358BC78F60487C5EAB98B5A6408E63903B1F6BD358B9FE302F06D729610BC
+          B2AE20B63CF9D780602072579FB9F98B6082E6DF8D044932FF156CA648EC89F7
+          5E7E844802299851B3C26667F30BCAF31D043B3091DFC3917E0F5C895C1C4D3C
+          03E095C79303A4CA20984111CBFCDDE6D6F6CA70D0C39B571F2A7164AF129589
+          14C65E59B0FB631765596C03C8030033E929BA8A0C4D8443F6A2982AF67E037E
+          F6AC9379188DF20000000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000001974455874536F6674776172650041646F626520496D616765526561
+          647971C9653C0000000B744558745469746C650053746F703BBA6D204F000001
+          2449444154785EAD91B14A03411086E74E4E7C085FC3C25EED62E1C3D8D8D9F8
+          08DA59F80C4284086A9D46EC4451825828B990E4727BBB3BB371FE42482EE79E
+          A0071F2C33DFFCECECA5F4C7EFDF0292D36EE7F2ECAAE394790B0E2E661603D2
+          2061676FEB30DBDF3EA21870D4DDC5CC5280E7B09EA58106A3EB2870D4CDEA01
+          093BD146452212050EDCFA0AE4BC36C51007890107EEEA5FF09A6AFC98583806
+          1CB8AB014E8B63F346D61724411A410F8E6B0CB0B8C18446664093EA9D2C17C4
+          C1019C51430F0EDCE615D0F4E2A9B0390D67AFF4317D0438A3861E9C1F56F042
+          959BB6BD019CE647642B3E3725AD251B517263E0723D606E2ABEEDF79EE5AEFB
+          4231FABD2751F706338B01E1E2E4E1E0FCF87EF337C0C5CC5280522A43E5B305
+          38E577C017B8899A7278A6B7920000000049454E44AE426082}
+      end>
+  end
+end
