@@ -20,19 +20,17 @@ object FrmHoras: TFrmHoras
   TextHeight = 13
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
-    Top = 126
+    Top = 127
     Width = 793
-    Height = 348
+    Height = 347
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-    ExplicitTop = 127
-    ExplicitHeight = 347
     object cxGrid1: TcxGrid
       Left = 10
       Top = 10
       Width = 773
-      Height = 328
+      Height = 327
       TabOrder = 0
       object cxGrid1Level1: TcxGridLevel
       end
@@ -140,11 +138,11 @@ object FrmHoras: TFrmHoras
     Left = 0
     Top = 0
     Width = 793
-    Height = 126
+    Height = 127
     BarManager = dxBarManager1
     Style = rs2010
     ColorSchemeAccent = rcsaBlue
-    ColorSchemeName = 'Office2010Silver'
+    ColorSchemeName = 'Blue'
     PopupMenuItems = [rpmiItems, rpmiMoreCommands, rpmiQATPosition, rpmiQATAddRemoveItem]
     Contexts = <>
     TabOrder = 2
@@ -177,7 +175,7 @@ object FrmHoras: TFrmHoras
   end
   object dxSkinController1: TdxSkinController
     NativeStyle = False
-    SkinName = 'Office2010Silver'
+    SkinName = 'Office2010Blue'
     Left = 64
     Top = 128
   end
@@ -226,7 +224,7 @@ object FrmHoras: TFrmHoras
       AllowReset = False
       Caption = 'Redmine'
       CaptionButtons = <>
-      DockedLeft = 144
+      DockedLeft = 140
       DockedTop = 0
       FloatLeft = 732
       FloatTop = 2
@@ -274,7 +272,7 @@ object FrmHoras: TFrmHoras
     object dxBarManager1Bar2: TdxBar
       Caption = 'Op'#231#245'es'
       CaptionButtons = <>
-      DockedLeft = 592
+      DockedLeft = 580
       DockedTop = 0
       FloatLeft = 732
       FloatTop = 2
@@ -335,7 +333,7 @@ object FrmHoras: TFrmHoras
       AllowReset = False
       Caption = 'Lembretes'
       CaptionButtons = <>
-      DockedLeft = 285
+      DockedLeft = 277
       DockedTop = 0
       FloatLeft = 732
       FloatTop = 2
