@@ -3,7 +3,7 @@ object FrmHoras: TFrmHoras
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'Controle de horas'
-  ClientHeight = 495
+  ClientHeight = 470
   ClientWidth = 793
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,15 +22,16 @@ object FrmHoras: TFrmHoras
     Left = 0
     Top = 127
     Width = 793
-    Height = 347
+    Height = 322
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
+    ExplicitHeight = 347
     object cxGrid1: TcxGrid
       Left = 10
       Top = 10
       Width = 773
-      Height = 327
+      Height = 302
       TabOrder = 0
       object cxGrid1Level1: TcxGridLevel
       end
@@ -58,7 +59,7 @@ object FrmHoras: TFrmHoras
   end
   object dxRibbonStatusBar1: TdxRibbonStatusBar
     Left = 0
-    Top = 474
+    Top = 449
     Width = 793
     Height = 21
     Panels = <
@@ -82,6 +83,7 @@ object FrmHoras: TFrmHoras
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+    ExplicitTop = 474
     object dxRibbonStatusBar1Container1: TdxStatusBarContainerControl
       Left = 0
       Top = 0
@@ -177,11 +179,11 @@ object FrmHoras: TFrmHoras
     NativeStyle = False
     SkinName = 'Office2010Blue'
     Left = 64
-    Top = 128
+    Top = 160
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
-    Left = 64
-    Top = 184
+    Left = 392
+    Top = 160
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
       PixelsPerInch = 96
     end
@@ -215,7 +217,7 @@ object FrmHoras: TFrmHoras
     PopupMenuLinks = <>
     UseSystemFont = True
     Left = 64
-    Top = 240
+    Top = 216
     PixelsPerInch = 96
     object dxBarManager1Bar1: TdxBar
       AllowClose = False
@@ -707,12 +709,12 @@ object FrmHoras: TFrmHoras
       end>
     StorageName = 'Horas.ini'
     Left = 64
-    Top = 295
+    Top = 271
   end
   object cxImageList1: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 23003200
+    DesignInfo = 21430336
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -1133,7 +1135,7 @@ object FrmHoras: TFrmHoras
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 26607680
+    DesignInfo = 25034816
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -1696,7 +1698,7 @@ object FrmHoras: TFrmHoras
     Ribbon = dxRibbon1
     UseOwnFont = False
     Left = 232
-    Top = 126
+    Top = 158
     PixelsPerInch = 96
   end
   object dxRibbonDropDownGallery2: TdxRibbonDropDownGallery
@@ -1709,7 +1711,7 @@ object FrmHoras: TFrmHoras
     Ribbon = dxRibbon1
     UseOwnFont = False
     Left = 232
-    Top = 182
+    Top = 214
     PixelsPerInch = 96
   end
   object dxRibbonDropDownGallery3: TdxRibbonDropDownGallery
@@ -1722,14 +1724,14 @@ object FrmHoras: TFrmHoras
     Ribbon = dxRibbon1
     UseOwnFont = False
     Left = 232
-    Top = 238
+    Top = 270
     PixelsPerInch = 96
   end
   object Timer1: TTimer
     Enabled = False
     OnTimer = Timer1Timer
     Left = 232
-    Top = 294
+    Top = 326
   end
   object cxGridPopupMenu1: TcxGridPopupMenu
     Grid = cxGrid1
@@ -1739,12 +1741,12 @@ object FrmHoras: TFrmHoras
         Index = 0
         PopupMenu = PopupMenu1
       end>
-    Left = 232
-    Top = 350
+    Left = 392
+    Top = 214
   end
   object PopupMenu1: TPopupMenu
     Left = 232
-    Top = 406
+    Top = 382
     object Continuar1: TMenuItem
       Caption = 'Continuar'
       OnClick = Continuar1Click
