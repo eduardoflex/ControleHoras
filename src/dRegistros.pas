@@ -94,6 +94,7 @@ begin
   cxSetResourceString(@scxGridNoDataInfoText, 'Sem horas registradas');
   cxSetResourceString(@scxGridGroupByBoxCaption, 'Arraste para agrupar');
   cxSetResourceString(@scxGridDeletingFocusedConfirmationText, 'Remover registro?');
+  cxSetResourceString(@scxGridColumnsQuickCustomizationHint, 'Customize as colunas');
 end;
 
 
