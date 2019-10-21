@@ -17,12 +17,12 @@ object DmOpcoes: TDmOpcoes
     Left = 56
     Top = 64
     object N3: TMenuItem
-      Caption = 'Atualizar chamados'
+      Caption = 'Atualizar lista de tarefas'
       ImageIndex = 2
       OnClick = Refresh1Click
     end
     object Selecionarchamado1: TMenuItem
-      Caption = 'Selecionar chamado'
+      Caption = 'Selecionar uma tarefa'
       Enabled = False
       ImageIndex = 6
     end
@@ -36,7 +36,7 @@ object DmOpcoes: TDmOpcoes
       Caption = '-'
     end
     object N1: TMenuItem
-      Caption = 'Sem chamado'
+      Caption = 'Sem tarefa'
       ImageIndex = 4
       object Geraodeverso1: TMenuItem
         Tag = 9
@@ -83,7 +83,7 @@ object DmOpcoes: TDmOpcoes
       Caption = '-'
     end
     object Informarchamado1: TMenuItem
-      Caption = 'Informar chamado'
+      Caption = 'Informar manualmente'
       ImageIndex = 16
       OnClick = Informarchamado1Click
     end
