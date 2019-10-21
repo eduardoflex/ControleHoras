@@ -72,6 +72,10 @@ object DmOpcoes: TDmOpcoes
         RadioItem = True
         OnClick = SemChamadoClick
       end
+      object Reuniogeral1: TMenuItem
+        Tag = 29
+        Caption = 'Reuni'#227'o geral'
+      end
       object Outro1: TMenuItem
         Tag = 29
         Caption = 'Outro'

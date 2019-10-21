@@ -33,6 +33,7 @@ type
     N5: TMenuItem;
     dxAlertWindowManager1: TdxAlertWindowManager;
     Outro1: TMenuItem;
+    Reuniogeral1: TMenuItem;
 
     procedure Refresh1Click(Sender: TObject);
     procedure ChamadoSelecionadoClick(Sender: TObject);
