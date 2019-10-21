@@ -4,7 +4,7 @@ object FrmHoras: TFrmHoras
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'Controle de horas'
   ClientHeight = 470
-  ClientWidth = 793
+  ClientWidth = 890
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,16 +21,16 @@ object FrmHoras: TFrmHoras
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 127
-    Width = 793
+    Width = 890
     Height = 322
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-    ExplicitHeight = 347
+    ExplicitWidth = 793
     object cxGrid1: TcxGrid
       Left = 10
       Top = 10
-      Width = 773
+      Width = 870
       Height = 302
       TabOrder = 0
       object cxGrid1Level1: TcxGridLevel
@@ -60,7 +60,7 @@ object FrmHoras: TFrmHoras
   object dxRibbonStatusBar1: TdxRibbonStatusBar
     Left = 0
     Top = 449
-    Width = 793
+    Width = 890
     Height = 21
     Panels = <
       item
@@ -83,7 +83,7 @@ object FrmHoras: TFrmHoras
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    ExplicitTop = 474
+    ExplicitWidth = 793
     object dxRibbonStatusBar1Container1: TdxStatusBarContainerControl
       Left = 0
       Top = 0
@@ -139,7 +139,7 @@ object FrmHoras: TFrmHoras
   object dxRibbon1: TdxRibbon
     Left = 0
     Top = 0
-    Width = 793
+    Width = 890
     Height = 127
     BarManager = dxBarManager1
     Style = rs2010
@@ -150,6 +150,7 @@ object FrmHoras: TFrmHoras
     TabOrder = 2
     TabStop = False
     OnTabChanging = dxRibbon1TabChanging
+    ExplicitWidth = 793
     object dxRibbon1Tab2: TdxRibbonTab
       Active = True
       Caption = 'Desenvolvimento Flex Smart'
@@ -529,6 +530,7 @@ object FrmHoras: TFrmHoras
     object dxBarSubItem2: TdxBarSubItem
       Caption = 'Perfis'
       Category = 2
+      Hint = 'Perfis de consulta de tarefas'
       Visible = ivAlways
       ImageIndex = 7
       LargeImageIndex = 6
@@ -548,7 +550,7 @@ object FrmHoras: TFrmHoras
     end
     object btnDev: TdxBarButton
       Tag = 10
-      Caption = 'Perfil desenvolvimento'
+      Caption = 'Desenvolvedor'
       Category = 2
       Hint = 'Perfil desenvolvimento'
       Visible = ivAlways
@@ -568,7 +570,7 @@ object FrmHoras: TFrmHoras
     end
     object btnAnalise: TdxBarButton
       Tag = 20
-      Caption = 'Perfil analise'
+      Caption = 'Analista'
       Category = 2
       Hint = 'Perfil analise'
       Visible = ivAlways
@@ -588,7 +590,7 @@ object FrmHoras: TFrmHoras
     end
     object btnTeste: TdxBarButton
       Tag = 30
-      Caption = 'Perfil teste'
+      Caption = 'Testador'
       Category = 2
       Hint = 'Perfil teste'
       Visible = ivAlways
@@ -600,6 +602,7 @@ object FrmHoras: TFrmHoras
     object edtUrlDev: TcxBarEditItem
       Caption = 'URL consulta:'
       Category = 2
+      Hint = 'Informar uma consulta agrupada por vers'#227'o merge'
       Visible = ivAlways
       Width = 300
       PropertiesClassName = 'TcxTextEditProperties'
