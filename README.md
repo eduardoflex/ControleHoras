@@ -1,7 +1,7 @@
 # ControleHoras
 
-![https://github.com/eduardoflex/ControleHoras/releases](https://img.shields.io/github/release/eduardoflex/ControleHoras.svg)
-![https://github.com/eduardoflex/ControleHoras/issues](https://img.shields.io/github/issues/eduardoflex/ControleHoras.svg)
+[![](https://img.shields.io/github/release/eduardoflex/ControleHoras.svg)](https://github.com/eduardoflex/ControleHoras/releases)
+[![](https://img.shields.io/github/issues/eduardoflex/ControleHoras.svg)](https://github.com/eduardoflex/ControleHoras/issues)
 
 ## RedMine - Desenvolvimento Flex Smart
 
