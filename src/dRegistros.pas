@@ -171,10 +171,12 @@ begin
   DmOpcoes.Parar1.Enabled := False;
 
   if Assigned(DmOpcoes.ItemSelecionado) then
+  begin
     DmOpcoes.ItemSelecionado.Checked := False;
 
-  if Assigned(DmOpcoes.ItemSelecionado.Parent) then
-    DmOpcoes.ItemSelecionado.Parent.Checked := False;
+    if Assigned(DmOpcoes.ItemSelecionado.Parent) then
+      DmOpcoes.ItemSelecionado.Parent.Checked := False;
+  end;
 
   DmOpcoes.ItemSelecionado := nil;
 

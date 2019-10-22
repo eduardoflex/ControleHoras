@@ -161,10 +161,12 @@ var
   Registro: TInfoRegistro;
 begin
   if Assigned(FItemSelecionado) then
+  begin
     FItemSelecionado.Checked := False;
 
-  if Assigned(FItemSelecionado.Parent) then
-    FItemSelecionado.Parent.Checked := False;
+    if Assigned(FItemSelecionado.Parent) then
+      FItemSelecionado.Parent.Checked := False;
+  end;
 
   FItemSelecionado := TMenuItem(Sender);
   FItemSelecionado.Checked := True;
@@ -186,10 +188,12 @@ var
   Registro: TInfoRegistro;
 begin
   if Assigned(FItemSelecionado) then
+  begin
     FItemSelecionado.Checked := False;
 
-  if Assigned(FItemSelecionado.Parent) then
-    FItemSelecionado.Parent.Checked := False;
+    if Assigned(FItemSelecionado.Parent) then
+      FItemSelecionado.Parent.Checked := False;
+  end;
 
   FItemSelecionado := TMenuItem(Sender);
   FItemSelecionado.Checked := True;
