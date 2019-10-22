@@ -3,16 +3,9 @@ unit dOpcoes;
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Menus, Vcl.ExtCtrls, System.Generics.Collections, System.ImageList, Vcl.ImgList,
-  Vcl.Controls, cxImageList, cxGraphics, cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
-  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinValentine, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, cxClasses, dxAlertWindow, dxSkinsDefaultPainters;
+  System.SysUtils, cxLookAndFeelPainters, cxGraphics, dxSkinsCore, dxSkinsDefaultPainters, cxClasses, dxAlertWindow,
+  System.ImageList, Vcl.ImgList, Vcl.Controls, cxImageList, Vcl.Menus, System.Classes, Vcl.ExtCtrls,
+  System.Generics.Collections;
 
 type
   TDmOpcoes = class(TDataModule)
@@ -120,10 +113,12 @@ var
   Registro: TInfoRegistro;
 begin
   if Assigned(FItemSelecionado) then
+  begin
     FItemSelecionado.Checked := False;
 
-  if Assigned(FItemSelecionado.Parent) then
-    FItemSelecionado.Parent.Checked := False;
+    if Assigned(FItemSelecionado.Parent) then
+      FItemSelecionado.Parent.Checked := False;
+  end;
 
   FItemSelecionado := TMenuItem(Sender);
 

@@ -3,14 +3,8 @@ unit dLembrete;
 interface
 
 uses
-  System.SysUtils, System.Classes, JvComponentBase, JvThreadTimer, cxLookAndFeelPainters, cxGraphics, dxSkinsCore,
-  dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
-  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinValentine, dxSkinXmas2008Blue, cxClasses,
-  dxAlertWindow, Vcl.ExtCtrls, dxSkinsDefaultPainters, System.ImageList, Vcl.ImgList, Vcl.Controls, cxImageList,
-  Vcl.Menus;
+  System.SysUtils, Vcl.Menus, cxLookAndFeelPainters, cxGraphics, dxSkinsCore, dxSkinsDefaultPainters, System.ImageList,
+  Vcl.ImgList, Vcl.Controls, cxImageList, Vcl.ExtCtrls, System.Classes, cxClasses, dxAlertWindow;
 
 type
   TDmLembrete = class(TDataModule)

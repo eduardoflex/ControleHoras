@@ -3,10 +3,10 @@ unit dRegistros;
 interface
 
 uses
-  System.SysUtils, System.Classes, cxGrid, Data.DB, Datasnap.DBClient, cxStyles, cxCustomData, cxGraphics, cxFilter,
-  cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges, cxDataControllerConditionalFormattingRulesManagerDialog,
-  cxDBData, cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxSpinEdit, cxImageComboBox, uAtividade;
+  System.SysUtils, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxGrid,
+  dxDateRanges, cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData, cxSpinEdit, cxImageComboBox,
+  Datasnap.DBClient, cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses, cxControls, cxGridCustomView,
+  System.Classes, uAtividade;
 
 type
   TInfoRegistro = record

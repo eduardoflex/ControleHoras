@@ -3,7 +3,7 @@ unit dRegistrar;
 interface
 
 uses
-  System.SysUtils, System.Classes, REST.Types, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, uAtividade;
+  System.SysUtils, REST.Types, REST.Client, System.Classes, Data.Bind.Components, Data.Bind.ObjectScope, uAtividade;
 
 type
   TdmRegistrar = class(TDataModule)

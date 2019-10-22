@@ -3,8 +3,8 @@ unit dTarefas;
 interface
 
 uses
-  System.SysUtils, System.Classes, REST.Types, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope,
-  System.Generics.Collections, uPerfil;
+  System.SysUtils, REST.Types, REST.Client, System.Classes, Data.Bind.Components, Data.Bind.ObjectScope,
+  System.Generics.Collections;
 
 type
   TDmTarefas = class(TDataModule)

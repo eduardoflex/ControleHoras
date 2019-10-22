@@ -3,22 +3,12 @@ unit fHoras;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, cxGrid,
-  Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Menus, REST.Types, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinSharp,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinSeven,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
-  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinTheAsphaltWorld,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin, dxSkinSevenClassic, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinsForm,
-  dxSkinXmas2008Blue, cxClasses, cxGridLevel, dxLayoutContainer, dxLayoutControl, System.Win.TaskbarCore, Vcl.Taskbar,
-  dxLayoutLookAndFeels, dxBar, dxBarApplicationMenu, dxRibbon, dxStatusBar, dxRibbonStatusBar, dxRibbonSkins,
-  dxRibbonCustomizationForm, cxPropertiesStore, System.ImageList, Vcl.ImgList, cxImageList, dxDateTimeWheelPicker,
-  cxBarEditItem, dxBarExtItems, dxSkinsDefaultPainters, cxMemo, cxButtonEdit, cxTextEdit, cxCheckBox, cxContainer,
-  cxEdit, dxGDIPlusClasses, cxImage, cxRadioGroup, dxTokenEdit, dxRibbonGallery, dxBarBuiltInMenu,
-  cxGridCustomPopupMenu, cxGridPopupMenu;
+  Winapi.Windows, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  cxStyles, dxLayoutContainer, cxContainer, cxEdit, dxRibbonSkins, dxRibbonCustomizationForm, dxTokenEdit, cxTextEdit,
+  dxDateTimeWheelPicker, cxCheckBox, dxBarBuiltInMenu, Vcl.Menus, cxGridCustomPopupMenu, cxGridPopupMenu, Vcl.ExtCtrls,
+  dxBar, dxRibbon, dxRibbonGallery, System.ImageList, Vcl.ImgList, Vcl.Controls, cxImageList, cxPropertiesStore,
+  cxBarEditItem, cxClasses, dxLayoutLookAndFeels, dxSkinsForm, dxGDIPlusClasses, cxImage, dxStatusBar,
+  dxRibbonStatusBar, cxGridLevel, cxGrid, System.Classes, dxLayoutControl, Vcl.Forms;
 
 type
   TFrmHoras = class(TForm)
@@ -98,7 +88,7 @@ var
 implementation
 
 uses
-  dRegistros, cxStorage, dOpcoes, dRegistrar, uAtividade, System.DateUtils, dLembrete, System.UITypes;
+  dRegistros, dRegistrar, dLembrete, dOpcoes, System.SysUtils, Vcl.Dialogs, System.Variants, System.UITypes;
 
 {$R *.dfm}
 
