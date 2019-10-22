@@ -26,7 +26,6 @@ object FrmHoras: TFrmHoras
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 793
     object cxGrid1: TcxGrid
       Left = 10
       Top = 10
@@ -83,7 +82,6 @@ object FrmHoras: TFrmHoras
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    ExplicitWidth = 793
     object dxRibbonStatusBar1Container1: TdxStatusBarContainerControl
       Left = 0
       Top = 0
@@ -150,7 +148,6 @@ object FrmHoras: TFrmHoras
     TabOrder = 2
     TabStop = False
     OnTabChanging = dxRibbon1TabChanging
-    ExplicitWidth = 793
     object dxRibbon1Tab2: TdxRibbonTab
       Active = True
       Caption = 'Desenvolvimento Flex Smart'

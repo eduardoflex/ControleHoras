@@ -37,6 +37,7 @@ implementation
 uses
   System.Json, fHoras, System.Variants;
 
+
 procedure TDmTarefas.CarregarPerfilDevAnalise(const dev: boolean);
 var
   JsonTarefas: TJSONObject;
@@ -50,60 +51,62 @@ var
   nmS: string;
   dicionarioAtual: TDictionary<Integer, string>;
 begin
-  statusAtual := '<< ---- >>';
+  try
+    statusAtual := '<< ---- >>';
 
-  RESTRequest1.Params[0].Value := FrmHoras.edtRedmineToken.EditValue;
+    RESTRequest1.Params[0].Value := FrmHoras.edtRedmineToken.EditValue;
 
-  if Assigned(FListaChamadosTeste) then
-    FListaChamadosDevAnalise.Clear
-  else
-    FListaChamadosDevAnalise := TDictionary<string, TDictionary<Integer, string>>.Create;
-
-  if dev then
-    if FrmHoras.edtUrlDev.EditValue = null then
-      Exit
+    if Assigned(FListaChamadosTeste) then
+      FListaChamadosDevAnalise.Clear
     else
-      RESTClient1.BaseURL := FrmHoras.edtUrlDev.EditValue
-  else
-    if FrmHoras.edtUrlAnalise.EditValue = null then
+      FListaChamadosDevAnalise := TDictionary < string, TDictionary < Integer, string >>.Create;
+
+    if dev then
+      if FrmHoras.edtUrlDev.EditValue = null then
+        Exit
+      else
+        RESTClient1.BaseURL := FrmHoras.edtUrlDev.EditValue
+    else if FrmHoras.edtUrlAnalise.EditValue = null then
       Exit
     else
       RESTClient1.BaseURL := FrmHoras.edtUrlAnalise.EditValue;
 
-  if RESTClient1.BaseURL = '' then
-    Exit;
+    if RESTClient1.BaseURL = '' then
+      Exit;
 
-  RESTRequest1.Execute;
-  if RESTResponse1.StatusCode <> 200 then
-    raise Exception.Create(RESTResponse1.StatusCode.ToString + ' - ' + RESTResponse1.StatusText);
+    RESTRequest1.Execute;
+    if RESTResponse1.StatusCode <> 200 then
+      raise Exception.Create(RESTResponse1.StatusCode.ToString + ' - ' + RESTResponse1.StatusText);
 
-  JsonTarefas := TJSONObject(RESTResponse1.JSONValue);
+    JsonTarefas := TJSONObject(RESTResponse1.JSONValue);
 
-  if not JsonTarefas.TryGetValue('issues', issues) then
-    Exit;
+    if not JsonTarefas.TryGetValue('issues', issues) then
+      Exit;
 
-  dicionarioAtual := TDictionary<Integer, string>.Create;
+    dicionarioAtual := TDictionary<Integer, string>.Create;
 
-  for issue in issues do
-    if issue.TryGetValue('id', id) and issue.TryGetValue('subject', subject) and issue.TryGetValue('status', status) and
-      status.TryGetValue('id', idS) and status.TryGetValue('name', nmS) then
-    begin
-      if nmS <> statusAtual then
+    for issue in issues do
+      if issue.TryGetValue('id', id) and issue.TryGetValue('subject', subject) and issue.TryGetValue('status', status)
+        and status.TryGetValue('id', idS) and status.TryGetValue('name', nmS) then
       begin
-        if Assigned(dicionarioAtual) and (statusAtual <> '<< ---- >>') then
-          FListaChamadosDevAnalise.Add(statusAtual, dicionarioAtual);
+        if nmS <> statusAtual then
+        begin
+          if Assigned(dicionarioAtual) and (statusAtual <> '<< ---- >>') then
+            FListaChamadosDevAnalise.Add(statusAtual, dicionarioAtual);
 
-        dicionarioAtual := TDictionary<Integer, string>.Create;
-        dicionarioAtual.Add(id, subject);
+          dicionarioAtual := TDictionary<Integer, string>.Create;
+          dicionarioAtual.Add(id, subject);
 
-        statusAtual := nmS;
-      end
-      else
-        dicionarioAtual.Add(id, subject);
-    end;
+          statusAtual := nmS;
+        end
+        else
+          dicionarioAtual.Add(id, subject);
+      end;
 
-  if Assigned(dicionarioAtual) and (statusAtual <> '<< ---- >>') then
-    FListaChamadosDevAnalise.Add(statusAtual, dicionarioAtual);
+    if Assigned(dicionarioAtual) and (statusAtual <> '<< ---- >>') then
+      FListaChamadosDevAnalise.Add(statusAtual, dicionarioAtual);
+  except
+  end;
 end;
 
 
@@ -121,53 +124,56 @@ var
   mergeAtual: string;
   dicionarioAtual: TDictionary<Integer, string>;
 begin
-  dicionarioAtual := nil;
+  try
+    dicionarioAtual := nil;
 
-  mergeAtual := '<< ---- >>';
+    mergeAtual := '<< ---- >>';
 
-  RESTRequest1.Params[0].Value := FrmHoras.edtRedmineToken.EditValue;
+    RESTRequest1.Params[0].Value := FrmHoras.edtRedmineToken.EditValue;
 
-  if Assigned(FListaChamadosTeste) then
-    FListaChamadosTeste.Clear
-  else
-    FListaChamadosTeste := TDictionary < string, TDictionary < Integer, string >>.Create;
+    if Assigned(FListaChamadosTeste) then
+      FListaChamadosTeste.Clear
+    else
+      FListaChamadosTeste := TDictionary < string, TDictionary < Integer, string >>.Create;
 
-  if FrmHoras.edtUrlTeste.EditValue = null then
-    Exit;
+    if FrmHoras.edtUrlTeste.EditValue = null then
+      Exit;
 
-  RESTClient1.BaseURL := FrmHoras.edtUrlTeste.EditValue;
+    RESTClient1.BaseURL := FrmHoras.edtUrlTeste.EditValue;
 
-  if RESTClient1.BaseURL = '' then
-    Exit;
+    if RESTClient1.BaseURL = '' then
+      Exit;
 
-  RESTRequest1.Execute;
-  if RESTResponse1.StatusCode <> 200 then
-    raise Exception.Create(RESTResponse1.StatusCode.ToString + ' - ' + RESTResponse1.StatusText);
+    RESTRequest1.Execute;
+    if RESTResponse1.StatusCode <> 200 then
+      raise Exception.Create(RESTResponse1.StatusCode.ToString + ' - ' + RESTResponse1.StatusText);
 
-  JsonTarefas := TJSONObject(RESTResponse1.JSONValue);
+    JsonTarefas := TJSONObject(RESTResponse1.JSONValue);
 
-  if not JsonTarefas.TryGetValue('issues', issues) then
-    Exit;
+    if not JsonTarefas.TryGetValue('issues', issues) then
+      Exit;
 
-  for issue in issues do
-    if issue.TryGetValue('id', id) and issue.TryGetValue('subject', subject) and
-      issue.TryGetValue('custom_fields', customs) then
-      for custom in customs do
-        if custom.TryGetValue('id', idF) and (idF = 28) and custom.TryGetValue('value', merge) then
-        begin
-          if merge <> mergeAtual then
+    for issue in issues do
+      if issue.TryGetValue('id', id) and issue.TryGetValue('subject', subject) and
+        issue.TryGetValue('custom_fields', customs) then
+        for custom in customs do
+          if custom.TryGetValue('id', idF) and (idF = 28) and custom.TryGetValue('value', merge) then
           begin
-            if Assigned(dicionarioAtual) and (mergeAtual <> '<< ---- >>') then
-              FListaChamadosTeste.Add(mergeAtual, dicionarioAtual);
+            if merge <> mergeAtual then
+            begin
+              if Assigned(dicionarioAtual) and (mergeAtual <> '<< ---- >>') then
+                FListaChamadosTeste.Add(mergeAtual, dicionarioAtual);
 
-            dicionarioAtual := TDictionary<Integer, string>.Create;
-            dicionarioAtual.Add(id, subject);
+              dicionarioAtual := TDictionary<Integer, string>.Create;
+              dicionarioAtual.Add(id, subject);
 
-            mergeAtual := merge;
-          end
-          else
-            dicionarioAtual.Add(id, subject);
-        end;
+              mergeAtual := merge;
+            end
+            else
+              dicionarioAtual.Add(id, subject);
+          end;
+  except
+  end;
 end;
 
 

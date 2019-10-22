@@ -35,7 +35,7 @@ var
 implementation
 
 uses
-  fHoras, dRegistrar;
+  fHoras, dRegistrar, dRegistros;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
@@ -63,6 +63,7 @@ end;
 
 procedure TDmLembrete.Registrarhoras1Click(Sender: TObject);
 begin
+  DmRegistros.Parar;
   DmRegistrar.Enviar;
 end;
 

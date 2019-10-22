@@ -26,7 +26,7 @@ var
 implementation
 
 uses
-  System.JSON, fHoras, dRegistros, dLembrete, Vcl.Dialogs;
+  System.JSON, fHoras, dRegistros, dLembrete, Vcl.Dialogs, Data.DB;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
@@ -74,8 +74,11 @@ end;
 procedure TdmRegistrar.Enviar;
 begin
   DmRegistros.ClientDataSet1.DisableControls;
+  DmLembrete.Timer1.Enabled := False;
   try
-    DmRegistros.ClientDataSet1.First;
+    if not DmRegistros.ClientDataSet1.IsEmpty then
+      DmRegistros.ClientDataSet1.First;
+
     while not DmRegistros.ClientDataSet1.Eof do
     begin
       Enviar(DmRegistros.ClientDataSet1projeto.Value, DmRegistros.ClientDataSet1tarefa.Value,
@@ -83,8 +86,6 @@ begin
         DmRegistros.ClientDataSet1comentario.Value, DmRegistros.ClientDataSet1data.Value);
       DmRegistros.ClientDataSet1.Next;
     end;
-
-    DmLembrete.Timer1.Enabled := False;
   finally
     DmRegistros.ClientDataSet1.EmptyDataSet;
     DmRegistros.ClientDataSet1.EnableControls;

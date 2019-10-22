@@ -7,6 +7,7 @@ object DmOpcoes: TDmOpcoes
     Icons = cxImageList1
     PopupMenu = PopupMenu1
     Visible = True
+    OnClick = TrayIcon1Click
     OnDblClick = TrayIcon1DblClick
     Left = 56
     Top = 16

@@ -41,6 +41,7 @@ type
 
   private const
     FILE_INI = 'Horas.grd';
+    procedure RestaurarIniFile;
     procedure Rodar;
 
   private
@@ -83,8 +84,8 @@ end;
 
 procedure TDmRegistros.Rodar;
 begin
-  FRodando := True;
   FrmHoras.Timer1.Enabled := True;
+  FRodando := True;
   DmOpcoes.Parar1.Enabled := True;
 end;
 
@@ -111,8 +112,10 @@ procedure TDmRegistros.ContinuarSelecionado;
 var
   info: TInfoRegistro;
 begin
-  info := default (TInfoRegistro);
+  if not ClientDataSet1.Active then
+    Exit;
 
+  info := default (TInfoRegistro);
   info.inicio := IncMinute(now, - Trunc((ClientDataSet1tempo.Value * 60)));
   info.chamado := ClientDataSet1tarefa.Value;
   info.atividade := TAtividades(ClientDataSet1atividade.Value);
@@ -122,6 +125,13 @@ begin
 
   DmOpcoes.SetHints(info.atividade.ToString + ': ' + info.chamado.ToString);
   SetRegistroAtual(info);
+end;
+
+
+procedure TDmRegistros.RestaurarIniFile;
+begin
+  if FileExists(FILE_INI) then
+    cxGridViewRepository1DBTableView1.RestoreFromIniFile(FILE_INI);
 end;
 
 
@@ -140,7 +150,7 @@ end;
 procedure TDmRegistros.DataModuleCreate(Sender: TObject);
 begin
   TranslateGrid;
-  cxGridViewRepository1DBTableView1.RestoreFromIniFile(FILE_INI);
+  RestaurarIniFile;
 end;
 
 
@@ -159,17 +169,24 @@ begin
   FrmHoras.Timer1.Enabled := False;
   DmOpcoes.SetHints('Parado');
   DmOpcoes.Parar1.Enabled := False;
+
   if Assigned(DmOpcoes.ItemSelecionado) then
-  begin
-    DmOpcoes.ItemSelecionado.Parent.Checked := False;
     DmOpcoes.ItemSelecionado.Checked := False;
-  end;
+
+  if Assigned(DmOpcoes.ItemSelecionado.Parent) then
+    DmOpcoes.ItemSelecionado.Parent.Checked := False;
+
+  DmOpcoes.ItemSelecionado := nil;
+
   FrmHoras.dxRibbonStatusBar1.Panels[1].Text := '00:00:00';
 end;
 
 
 procedure TDmRegistros.AddRegistro;
 begin
+  if not ClientDataSet1.Active then
+    ClientDataSet1.Open;
+
   ClientDataSet1.Append;
   ClientDataSet1tempo.Value := GetTempo;
   ClientDataSet1tarefa.Value := FRegistroAtual.chamado;

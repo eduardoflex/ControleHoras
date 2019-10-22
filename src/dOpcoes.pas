@@ -42,6 +42,7 @@ type
     procedure DataModuleCreate(Sender: TObject);
     procedure SemChamadoClick(Sender: TObject);
     procedure Informarchamado1Click(Sender: TObject);
+    procedure TrayIcon1Click(Sender: TObject);
 
   private
     FMenuItems: TList<TMenuItem>;
@@ -63,7 +64,7 @@ type
   public
     procedure SetHints(const Value: string);
 
-    property ItemSelecionado: TMenuItem read FItemSelecionado;
+    property ItemSelecionado: TMenuItem read FItemSelecionado write FItemSelecionado;
 
   end;
 
@@ -101,14 +102,14 @@ procedure TDmOpcoes.LimparListaMenus;
 var
   menuItem: TMenuItem;
 begin
+  if not Assigned(FMenuItems) then
+    Exit;
+
   try
-    if Assigned(FMenuItems) then
-    begin
-      for menuItem in FMenuItems do
-        if Assigned(menuItem) then
-          menuItem.Free;
-      FMenuItems.Clear;
-    end;
+    for menuItem in FMenuItems do
+      if Assigned(menuItem) then
+        menuItem.Free;
+    FMenuItems.Clear;
   except
   end;
 end;
@@ -119,25 +120,30 @@ var
   Registro: TInfoRegistro;
 begin
   if Assigned(FItemSelecionado) then
-  begin
-    FItemSelecionado.Parent.Checked := False;
     FItemSelecionado.Checked := False;
-  end;
 
-  TMenuItem(Sender).Parent.Checked := True;
+  if Assigned(FItemSelecionado.Parent) then
+    FItemSelecionado.Parent.Checked := False;
+
   FItemSelecionado := TMenuItem(Sender);
-  SetTarefaSelecionada(TMenuItem(Sender).Parent.Caption.Replace('&', '').ToInteger);
 
   Registro := default (TInfoRegistro);
   Registro.inicio := now;
   Registro.chamado := FTarefaSelecionada;
-  Registro.atividade := TAtividades(TMenuItem(Sender).Tag);
-
+  Registro.atividade := TAtividades(FItemSelecionado.Tag);
   DmRegistros.RegistroAtual := Registro;
 
-  SetHints(TAtividades(TMenuItem(Sender).Tag).ToString + ': ' +
-    FTarefaSelecionada.ToString + ' (' +
-    TMenuItem(Sender).Parent.Items[0].Caption.Replace('&', '') + ')');
+  SetHints(TAtividades(FItemSelecionado.Tag).ToString + ': ' + FTarefaSelecionada.ToString);
+
+  if not Assigned(FItemSelecionado.Parent) then
+    Exit;
+
+  FItemSelecionado.Parent.Checked := True;
+  SetTarefaSelecionada(FItemSelecionado.Parent.Caption.Replace('&', '').ToInteger);
+
+  if not Assigned(FItemSelecionado.Parent.Items[0]) then
+    SetHints(TAtividades(FItemSelecionado.Tag).ToString + ': ' + FTarefaSelecionada.ToString + ' (' +
+      FItemSelecionado.Parent.Items[0].Caption.Replace('&', '') + ')');
 end;
 
 
@@ -155,22 +161,22 @@ var
   Registro: TInfoRegistro;
 begin
   if Assigned(FItemSelecionado) then
-  begin
-    FItemSelecionado.Parent.Checked := False;
     FItemSelecionado.Checked := False;
-  end;
 
-  TMenuItem(Sender).Checked := True;
+  if Assigned(FItemSelecionado.Parent) then
+    FItemSelecionado.Parent.Checked := False;
+
   FItemSelecionado := TMenuItem(Sender);
+  FItemSelecionado.Checked := True;
 
   Registro := default (TInfoRegistro);
   Registro.inicio := now;
-  Registro.atividade := TAtividades(TMenuItem(Sender).Tag);
-  Registro.comentario := TMenuItem(Sender).Hint.Replace('&', '');
+  Registro.atividade := TAtividades(FItemSelecionado.Tag);
+  Registro.comentario := FItemSelecionado.Hint.Replace('&', '');
 
   DmRegistros.RegistroAtual := Registro;
 
-  SetHints(TMenuItem(Sender).Caption.Replace('&', ''));
+  SetHints(FItemSelecionado.Caption.Replace('&', ''));
 end;
 
 
@@ -179,6 +185,15 @@ var
   IdChamado: string;
   Registro: TInfoRegistro;
 begin
+  if Assigned(FItemSelecionado) then
+    FItemSelecionado.Checked := False;
+
+  if Assigned(FItemSelecionado.Parent) then
+    FItemSelecionado.Parent.Checked := False;
+
+  FItemSelecionado := TMenuItem(Sender);
+  FItemSelecionado.Checked := True;
+
   InputQuery('Informar manualmente', 'Informe o número do chamado: ', IdChamado);
   SetTarefaSelecionada(StrToIntDef(IdChamado, 0));
 
@@ -186,7 +201,6 @@ begin
   Registro.inicio := now;
   Registro.chamado := FTarefaSelecionada;
   Registro.atividade := Desconhecida;
-
   DmRegistros.RegistroAtual := Registro;
 
   SetHints('Tarefa: ' + FTarefaSelecionada.ToString);
@@ -218,37 +232,42 @@ var
   itemVersao2: TMenuItem;
 begin
   statuses := DmTarefas.GetListaChamadosDev;
+  if not Assigned(statuses) then
+    Exit;
+
   for status in statuses.Keys do
-  begin
-    if status = '<< ---- >>' then
-      continue;
+    try
+      if status = '<< ---- >>' then
+        continue;
 
-    itemVersao := TMenuItem.Create(Self);
-    itemVersao.Caption := status;
-    Selecionarchamado1.Add(itemVersao);
+      itemVersao := TMenuItem.Create(Self);
+      itemVersao.Caption := status;
+      Selecionarchamado1.Add(itemVersao);
 
-    for chamado in statuses[status].Keys do
-    begin
-      menuItem := TMenuItem.Create(Self);
-      menuItem.Caption := chamado.ToString;
-      menuItem.Hint := statuses[status][chamado];
-      menuItem.ImageIndex := 5;
+      for chamado in statuses[status].Keys do
+      begin
+        menuItem := TMenuItem.Create(Self);
+        menuItem.Caption := chamado.ToString;
+        menuItem.Hint := statuses[status][chamado];
+        menuItem.ImageIndex := 5;
 
-      AdicionarDescricao(menuItem);
-      AdicionarDesenvolvimento(menuItem);
-      AdicionarRetorno(menuItem);
+        AdicionarDescricao(menuItem);
+        AdicionarDesenvolvimento(menuItem);
+        AdicionarRetorno(menuItem);
 
-      itemVersao.Add(menuItem);
-      FMenuItems.Add(menuItem);
+        itemVersao.Add(menuItem);
+        FMenuItems.Add(menuItem);
+      end;
+
+      FMenuItems.Add(itemVersao);
+      itemVersao2 := TMenuItem.Create(Self);
+      itemVersao2.Caption := '-';
+      Selecionarchamado1.Add(itemVersao2);
+      FMenuItems.Add(itemVersao2);
+    except
     end;
-
-    FMenuItems.Add(itemVersao);
-    itemVersao2 := TMenuItem.Create(Self);
-    itemVersao2.Caption := '-';
-    Selecionarchamado1.Add(itemVersao2);
-    FMenuItems.Add(itemVersao2);
-  end;
 end;
+
 
 procedure TDmOpcoes.PopularListaMenusAnalise;
 var
@@ -260,36 +279,40 @@ var
   itemVersao2: TMenuItem;
 begin
   statuses := DmTarefas.GetListaChamadosAnalise;
+  if not Assigned(statuses) then
+    Exit;
+
   for status in statuses.Keys do
-  begin
-    if status = '<< ---- >>' then
-      continue;
+    try
+      if status = '<< ---- >>' then
+        continue;
 
-    itemVersao := TMenuItem.Create(Self);
-    itemVersao.Caption := status;
-    Selecionarchamado1.Add(itemVersao);
+      itemVersao := TMenuItem.Create(Self);
+      itemVersao.Caption := status;
+      Selecionarchamado1.Add(itemVersao);
 
-    for chamado in statuses[status].Keys do
-    begin
-      menuItem := TMenuItem.Create(Self);
-      menuItem.Caption := chamado.ToString;
-      menuItem.Hint := statuses[status][chamado];
-      menuItem.ImageIndex := 5;
+      for chamado in statuses[status].Keys do
+      begin
+        menuItem := TMenuItem.Create(Self);
+        menuItem.Caption := chamado.ToString;
+        menuItem.Hint := statuses[status][chamado];
+        menuItem.ImageIndex := 5;
 
-      AdicionarDescricao(menuItem);
-      AdicionarTeste(menuItem);
-      AdicionarAnalise(menuItem);
+        AdicionarDescricao(menuItem);
+        AdicionarTeste(menuItem);
+        AdicionarAnalise(menuItem);
 
-      itemVersao.Add(menuItem);
-      FMenuItems.Add(menuItem);
+        itemVersao.Add(menuItem);
+        FMenuItems.Add(menuItem);
+      end;
+
+      FMenuItems.Add(itemVersao);
+      itemVersao2 := TMenuItem.Create(Self);
+      itemVersao2.Caption := '-';
+      Selecionarchamado1.Add(itemVersao2);
+      FMenuItems.Add(itemVersao2);
+    except
     end;
-
-    FMenuItems.Add(itemVersao);
-    itemVersao2 := TMenuItem.Create(Self);
-    itemVersao2.Caption := '-';
-    Selecionarchamado1.Add(itemVersao2);
-    FMenuItems.Add(itemVersao2);
-  end;
 end;
 
 
@@ -303,39 +326,43 @@ var
   itemVersao2: TMenuItem;
 begin
   versoes := DmTarefas.GetListaChamadosTeste;
+  if not Assigned(versoes) then
+    Exit;
+
   for versao in versoes.Keys do
-  begin
-    if versao = '<< ---- >>' then
-      continue;
+    try
+      if versao = '<< ---- >>' then
+        continue;
 
-    itemVersao := TMenuItem.Create(Self);
-    if versao = '' then
-      itemVersao.Caption := '(blank)'
-    else
-      itemVersao.Caption := versao;
-    Selecionarchamado1.Add(itemVersao);
+      itemVersao := TMenuItem.Create(Self);
+      if versao = '' then
+        itemVersao.Caption := '(blank)'
+      else
+        itemVersao.Caption := versao;
+      Selecionarchamado1.Add(itemVersao);
 
-    for chamado in versoes[versao].Keys do
-    begin
-      menuItem := TMenuItem.Create(Self);
-      menuItem.Caption := chamado.ToString;
-      menuItem.Hint := versoes[versao][chamado];
-      menuItem.ImageIndex := 5;
+      for chamado in versoes[versao].Keys do
+      begin
+        menuItem := TMenuItem.Create(Self);
+        menuItem.Caption := chamado.ToString;
+        menuItem.Hint := versoes[versao][chamado];
+        menuItem.ImageIndex := 5;
 
-      AdicionarDescricao(menuItem);
-      AdicionarTeste(menuItem);
-      AdicionarAnalise(menuItem);
+        AdicionarDescricao(menuItem);
+        AdicionarTeste(menuItem);
+        AdicionarAnalise(menuItem);
 
-      itemVersao.Add(menuItem);
-      FMenuItems.Add(menuItem);
+        itemVersao.Add(menuItem);
+        FMenuItems.Add(menuItem);
+      end;
+
+      FMenuItems.Add(itemVersao);
+      itemVersao2 := TMenuItem.Create(Self);
+      itemVersao2.Caption := '-';
+      Selecionarchamado1.Add(itemVersao2);
+      FMenuItems.Add(itemVersao2);
+    except
     end;
-
-    FMenuItems.Add(itemVersao);
-    itemVersao2 := TMenuItem.Create(Self);
-    itemVersao2.Caption := '-';
-    Selecionarchamado1.Add(itemVersao2);
-    FMenuItems.Add(itemVersao2);
-  end;
 end;
 
 
@@ -350,6 +377,9 @@ procedure TDmOpcoes.AdicionarDescricao(menuItem: TMenuItem);
 var
   menuSubItem: TMenuItem;
 begin
+  if not Assigned(menuItem) then
+    Exit;
+
   menuSubItem := TMenuItem.Create(Self);
   menuSubItem.Caption := menuItem.Hint;
   menuSubItem.enabled := False;
@@ -365,6 +395,9 @@ procedure TDmOpcoes.AdicionarRetorno(menuItem: TMenuItem);
 var
   menuSubItem: TMenuItem;
 begin
+  if not Assigned(menuItem) then
+    Exit;
+
   menuSubItem := TMenuItem.Create(Self);
   menuSubItem.Caption := 'Retorno';
   menuSubItem.OnClick := ChamadoSelecionadoClick;
@@ -378,6 +411,9 @@ procedure TDmOpcoes.AdicionarDesenvolvimento(menuItem: TMenuItem);
 var
   menuSubItem: TMenuItem;
 begin
+  if not Assigned(menuItem) then
+    Exit;
+
   menuSubItem := TMenuItem.Create(Self);
   menuSubItem.Caption := 'Desenvolvimento';
   menuSubItem.OnClick := ChamadoSelecionadoClick;
@@ -391,6 +427,9 @@ procedure TDmOpcoes.AdicionarTeste(menuItem: TMenuItem);
 var
   menuSubItem: TMenuItem;
 begin
+  if not Assigned(menuItem) then
+    Exit;
+
   menuSubItem := TMenuItem.Create(Self);
   menuSubItem.Caption := 'Teste';
   menuSubItem.OnClick := ChamadoSelecionadoClick;
@@ -404,6 +443,9 @@ procedure TDmOpcoes.AdicionarAnalise(menuItem: TMenuItem);
 var
   menuSubItem: TMenuItem;
 begin
+  if not Assigned(menuItem) then
+    Exit;
+
   menuSubItem := TMenuItem.Create(Self);
   menuSubItem.Caption := 'Análise';
   menuSubItem.OnClick := ChamadoSelecionadoClick;
@@ -416,6 +458,12 @@ end;
 procedure TDmOpcoes.SetTarefaSelecionada(const Value: Integer);
 begin
   FTarefaSelecionada := Value;
+end;
+
+
+procedure TDmOpcoes.TrayIcon1Click(Sender: TObject);
+begin
+  PopupMenu1.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 end;
 
 

@@ -105,6 +105,7 @@ uses
 
 procedure TFrmHoras.btnRedmineSalvarClick(Sender: TObject);
 begin
+  DmRegistros.Parar;
   DmRegistrar.Enviar;
 end;
 
@@ -120,15 +121,18 @@ begin
   DmRegistros.ContinuarSelecionado;
 end;
 
+
 procedure TFrmHoras.dxBarLargeButton1Click(Sender: TObject);
 begin
   DmOpcoes.PopupMenu1.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 end;
 
+
 procedure TFrmHoras.dxRibbon1TabChanging(Sender: TdxCustomRibbon; ANewTab: TdxRibbonTab; var Allow: Boolean);
 begin
   Allow := ANewTab = dxRibbon1Tab2;
 end;
+
 
 procedure TFrmHoras.edtLembreteIntervaloPropertiesEditValueChanged(Sender: TObject);
 begin
@@ -151,21 +155,15 @@ end;
 
 procedure TFrmHoras.btnDevClick(Sender: TObject);
 begin
-  if TComponent(Sender).Tag = 10 then
-  begin
-    btnAnalise.Down := False;
-    btnTeste.Down := False;
-  end
-  else if TComponent(Sender).Tag = 20 then
-  begin
-    btnDev.Down := False;
-    btnTeste.Down := False;
-  end
-  else if TComponent(Sender).Tag = 30 then
-  begin
-    btnAnalise.Down := False;
-    btnDev.Down := False;
-  end;
+  btnAnalise.Down := TComponent(Sender).Tag <> 10;
+  btnTeste.Down := TComponent(Sender).Tag <> 10;
+
+  btnDev.Down := TComponent(Sender).Tag <> 20;
+  btnTeste.Down := TComponent(Sender).Tag <> 20;
+
+  btnAnalise.Down := TComponent(Sender).Tag <> 30;
+  btnDev.Down := TComponent(Sender).Tag <> 30;
+
   DmOpcoes.Refresh1Click(Sender);
 end;
 
