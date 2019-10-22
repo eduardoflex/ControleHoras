@@ -8,7 +8,7 @@ uses
   dxDateTimeWheelPicker, cxCheckBox, dxBarBuiltInMenu, Vcl.Menus, cxGridCustomPopupMenu, cxGridPopupMenu, Vcl.ExtCtrls,
   dxBar, dxRibbon, dxRibbonGallery, System.ImageList, Vcl.ImgList, Vcl.Controls, cxImageList, cxPropertiesStore,
   cxBarEditItem, cxClasses, dxLayoutLookAndFeels, dxSkinsForm, dxGDIPlusClasses, cxImage, dxStatusBar,
-  dxRibbonStatusBar, cxGridLevel, cxGrid, System.Classes, dxLayoutControl, Vcl.Forms;
+  dxRibbonStatusBar, cxGridLevel, cxGrid, System.Classes, dxLayoutControl, Vcl.Forms, dxSkinOffice2010Blue;
 
 type
   TFrmHoras = class(TForm)

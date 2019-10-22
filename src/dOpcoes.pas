@@ -35,7 +35,6 @@ type
     procedure DataModuleCreate(Sender: TObject);
     procedure SemChamadoClick(Sender: TObject);
     procedure Informarchamado1Click(Sender: TObject);
-    procedure TrayIcon1Click(Sender: TObject);
 
   private
     FMenuItems: TList<TMenuItem>;
@@ -457,12 +456,6 @@ end;
 procedure TDmOpcoes.SetTarefaSelecionada(const Value: Integer);
 begin
   FTarefaSelecionada := Value;
-end;
-
-
-procedure TDmOpcoes.TrayIcon1Click(Sender: TObject);
-begin
-  PopupMenu1.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 end;
 
 
