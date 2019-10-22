@@ -63,11 +63,8 @@ begin
 
     RESTRequest1.Params[0].Value := FrmHoras.edtRedmineToken.EditValue;
     RESTRequest1.Params[1].Value := JsonTime.ToJSON;
-{$IFNDEF DEBUG}
+
     RESTRequest1.Execute;
-{$ELSE}
-    ShowMessage(JsonTime.ToString);
-{$ENDIF}
   finally
     JsonTime.Free;
   end;
