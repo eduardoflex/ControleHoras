@@ -184,7 +184,9 @@ end;
 procedure TFrmHoras.FormResize(Sender: TObject);
 begin
   if Self.WindowState in [wsMaximized, wsNormal] then
-    dxLayoutControl1.Top := dxRibbon1.Height;
+    dxLayoutControl1.Top := dxRibbon1.Height
+  else if Self.WindowState in [wsMinimized] then
+    Hide;
 end;
 
 
