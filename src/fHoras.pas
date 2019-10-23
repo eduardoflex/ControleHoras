@@ -89,6 +89,8 @@ implementation
 
 uses
   dRegistros, dRegistrar, dLembrete, dOpcoes, System.SysUtils, Vcl.Dialogs, System.Variants, System.UITypes;
+  dRegistros, dRegistrar, dLembrete, dOpcoes, System.SysUtils, Vcl.Dialogs, System.Variants, System.UITypes,
+  uVersao;
 
 {$R *.dfm}
 
@@ -175,6 +177,7 @@ end;
 procedure TFrmHoras.FormCreate(Sender: TObject);
 begin
 {$IFNDEF DEBUG}dxRibbonStatusBar1.Panels[0].Visible := False; {$ENDIF}
+  Caption := Caption + ' - Vers�o: ' + TVersao.GetVersao;
 end;
 
 

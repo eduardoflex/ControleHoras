@@ -11,7 +11,8 @@ uses
   dRegistrar in 'src\dRegistrar.pas' {dmRegistrar: TDataModule},
   dSituacao in 'src\dSituacao.pas' {DataModule1: TDataModule},
   uSituacao in 'src\uSituacao.pas',
-  uPerfil in 'src\uPerfil.pas';
+  uPerfil in 'src\uPerfil.pas',
+  uVersao in 'src\uVersao.pas';
 
 {$R *.res}
 
