@@ -127,15 +127,16 @@ begin
   Registro.atividade := TAtividades(FItemSelecionado.Tag);
   DmRegistros.RegistroAtual := Registro;
 
-  SetHints(TAtividades(FItemSelecionado.Tag).ToString + ': ' + FTarefaSelecionada.ToString);
-
   if not Assigned(FItemSelecionado.Parent) then
+  begin
+    SetHints(TAtividades(FItemSelecionado.Tag).ToString + ': ' + FTarefaSelecionada.ToString);
     Exit;
+  end;
 
   FItemSelecionado.Parent.Checked := True;
   SetTarefaSelecionada(FItemSelecionado.Parent.Caption.Replace('&', '').ToInteger);
 
-  if not Assigned(FItemSelecionado.Parent.Items[0]) then
+  if Assigned(FItemSelecionado.Parent.Items[0]) then
     SetHints(TAtividades(FItemSelecionado.Tag).ToString + ': ' + FTarefaSelecionada.ToString + ' (' +
       FItemSelecionado.Parent.Items[0].Caption.Replace('&', '') + ')');
 end;

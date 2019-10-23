@@ -88,7 +88,6 @@ var
 implementation
 
 uses
-  dRegistros, dRegistrar, dLembrete, dOpcoes, System.SysUtils, Vcl.Dialogs, System.Variants, System.UITypes;
   dRegistros, dRegistrar, dLembrete, dOpcoes, System.SysUtils, Vcl.Dialogs, System.Variants, System.UITypes,
   uVersao;
 
@@ -147,14 +146,9 @@ end;
 
 procedure TFrmHoras.btnDevClick(Sender: TObject);
 begin
-  btnAnalise.Down := TComponent(Sender).Tag <> 10;
-  btnTeste.Down := TComponent(Sender).Tag <> 10;
-
-  btnDev.Down := TComponent(Sender).Tag <> 20;
-  btnTeste.Down := TComponent(Sender).Tag <> 20;
-
-  btnAnalise.Down := TComponent(Sender).Tag <> 30;
-  btnDev.Down := TComponent(Sender).Tag <> 30;
+  btnDev.Down := TComponent(Sender).Tag = 10;
+  btnAnalise.Down := TComponent(Sender).Tag = 20;
+  btnTeste.Down := TComponent(Sender).Tag = 30;
 
   DmOpcoes.Refresh1Click(Sender);
 end;
@@ -177,7 +171,7 @@ end;
 procedure TFrmHoras.FormCreate(Sender: TObject);
 begin
 {$IFNDEF DEBUG}dxRibbonStatusBar1.Panels[0].Visible := False; {$ENDIF}
-  Caption := Caption + ' - Versï¿½o: ' + TVersao.GetVersao;
+  Caption := Caption + ' - Versão: ' + TVersao.GetVersao;
 end;
 
 

@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>Horas.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -54,10 +54,10 @@
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
         <SanitizedProjectName>Horas</SanitizedProjectName>
         <VerInfo_Locale>1046</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.1.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.2.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;dxFlowChartRS26;dxPSdxMapControlLnkRS26;DBXDb2Driver;vclactnband;dxBarRS26;vclFireDAC;dxFireDACEMFRS26;tethering;dxSpreadSheetInplaceRichEditRS26;FireDACADSDriver;ACBr_BPeDabpeESCPOS;JvPluginSystem;ACBr_BPe;dxRichEditCoreRS26;dxPSdxSpreadSheetLnkRS26;FireDACMSSQLDriver;vcltouch;JvBands;ACBr_NFe;vcldb;svn;JvJans;dxPSTeeChartRS26;ACBr_NFeDanfeESCPOS;persistencia;JvDotNetCtrls;dxGDIPlusRS26;dxPSdxFCLnkRS26;vclib;dxCloudServiceLibraryRS26;dxPSLnksRS26;FireDACDBXDriver;cxGridRS26;dxPsPrVwAdvRS26;dxPDFViewerRS26;Selecionador;vclx;dxPScxTLLnkRS26;ACBr_SATExtratoRL;RESTBackendComponents;ACBr_Reinf;VCLRESTComponents;vclie;bindengine;CloudService;rbRCL1926;JvHMI;FireDACMySQLDriver;ACBr_PAF;dxmdsRS26;ACBr_SATECFVirtual;dxdborRS26;DataSnapClient;dxFireDACServerModeRS26;bindcompdbx;ACBr_CTeDacteRL;ACBr_TCP;IndyIPServer;DBXSybaseASEDriver;ACBr_CTe;cxPivotGridRS26;IndySystem;cxTreeListdxBarPopupMenuRS26;dsnapcon;cxTreeListRS26;ACBr_synapse;ACBre_Social;cxSchedulerRibbonStyleEventEditorRS26;rbIDE1926;dxPSCoreRS26;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;ACBr_SPEDImportar;Jcl;dxSpreadSheetRS26;dxBarExtItemsRS26;ACBr_SPED;ACBr_MDFe;emshosting;dxPScxPivotGridLnkRS26;dxPSdxGaugeControlLnkRS26;ACBr_BoletoRL;ACBr_LFD;DBXOdbcDriver;FireDACTDataDriver;FMXTee;dxdbtrRS26;dxRichEditControlCoreRS26;soaprtl;DbxCommonDriver;rbRTL1926;dxFlowChartAdvancedCustomizeFormRS26;JvManagedThreads;ACBr_NFSeDanfseRL;dxDockingRS26;PkgCampoLookup;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;JvTimeFramework;cxLibraryRS26;rtl;emsserverresource;DbxClientDriver;DBXSybaseASADriver;dxPScxSchedulerLnkRS26;JvSystem;JvStdCtrls;dxSpreadSheetConditionalFormattingDialogsRS26;ACBr_Convenio115;appanalytics;dxRibbonCustomizationFormRS26;cxSchedulerGridRS26;IndyIPClient;bindcompvcl;dclRBE1926;TeeUI;dxADOEMFRS26;JvDocking;JvPascalInterpreter;VclSmp;rbIBE1926;FireDACODBCDriver;rbADO1926;JclVcl;DataSnapIndy10ServerTransport;dxRibbonRS26;dxPScxCommonRS26;dxRichEditDocumentModelRS26;ACBr_Boleto;DataSnapProviderClient;ACBr_SEF2;FireDACMongoDBDriver;dxFlowChartDesignerRS26;JvControls;dxPScxGridLnkRS26;JvPrintPreview;PkgEditBotaoMais;ACBr_NFSe;rbUSERDesign1926;dxSpreadSheetCoreRS26;DataSnapServerMidas;RESTComponents;ZComponent;DBXInterBaseDriver;rbDB1926;rbCIDE1926;rbDAD1926;ACBr_TEFD;ZCore;dxPScxExtCommonRS26;emsclientfiredac;ACBr_SATWS;DataSnapFireDAC;svnui;JvGlobus;rbRest1926;DBXMSSQLDriver;JvMM;ACBr_MDFeDamdfeRL;dxRichEditControlRS26;DatasnapConnectorsFreePascal;LockBox;dxGaugeControlRS26;ACBrDFeReportRL;dxorgcRS26;dxPScxVGridLnkRS26;bindcompfmx;JvNet;DBXOracleDriver;inetdb;JvAppFrm;ACBr_Diversos;dxBarDBNavRS26;ExcelExportPackD102;dxDBXServerModeRS26;ACBr_TXTComum;PInfoEdit;FmxTeeUI;emsedge;fmx;FireDACIBDriver;fmxdae;dxServerModeRS26;dxWizardControlRS26;rbUSER1926;JvWizards;dxTabbedMDIRS26;ACBr_Ponto;dxEMFRS26;dbexpress;IndyCore;rbRIDE1926;dxComnRS26;ZParseSql;PEditCns;rbDIDE1926;dsnap;emsclient;DataSnapCommon;JvPageComps;FireDACCommon;JvDB;ACBr_PCNComum;DataSnapConnectors;cxSchedulerTreeBrowserRS26;dxADOServerModeRS26;ACBR_DeSTDA;soapserver;ACBr_SAT;JclDeveloperTools;cxPivotGridOLAPRS26;cxVerticalGridRS26;dxtrmdRS26;FireDACOracleDriver;DBXMySQLDriver;JvCmp;cxSchedulerRS26;cxSchedulerWebServiceStorageRS26;DBXFirebirdDriver;dxPSdxLCLnkRS26;PainelConsulta;rbTCUI1926;FireDACCommonODBC;FireDACCommonDriver;ACBr_GNRE;dxMapControlRS26;inet;dxSpellCheckerRS26;IndyIPCommon;dclRBDBE1926;JvCustom;dxSpreadSheetCoreConditionalFormattingDialogsRS26;vcl;ACBr_NFeDanfeRL;dxPSdxDBOCLnkRS26;JvXPCtrls;rbRAP1926;ACBr_SATExtratoESCPOS;FireDACDb2Driver;dxSpreadSheetReportDesignerRS26;dxPScxPCProdRS26;dxNavBarRS26;dxCoreRS26;ZDbc;TeeDB;FireDAC;dxHttpIndyRequestRS26;cxExportRS26;JvCore;dxPSPrVwRibbonRS26;ACBr_Comum;HtmlFerramentas;rbTC1926;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;JvCrypt;ACBr_GNREGuiaRL;rbBDE1926;cxPivotGridChartRS26;dxPSRichEditControlLnkRS26;JvDlgs;JvRuntimeDesign;dxPSDBTeeChartRS26;ibxpress;Tee;DataSnapServer;ibxbindings;dclExcelExportPackD102;dxPSdxDBTVLnkRS26;vclwinx;FireDACDSDriver;ACBr_OpenSSL;dxTileControlRS26;ACBr_DFeComum;CustomIPTransport;vcldsnap;dclRBADO1926;dxSkinsCoreRS26;dclRBIBE1926;bindcomp;ZPlain;ACBr_Serial;DBXInformixDriver;dxPSdxOCLnkRS26;frce;dclRBFireDAC1926;ACBr_BlocoX;dbxcds;ACBr_NFCeECFVirtual;adortl;ACBr_ANe;dxSpreadSheetCoreDialogsRS26;dxBarExtDBItemsRS26;dsnapxml;rbFireDAC1926;dbrtl;IndyProtocols;inetdbxpress;rbDBE1926;dxRichEditInplaceRS26;dxPSdxPDFViewerLnkRS26;JclContainers;ACBr_MTER;fmxase;ACBr_Sintegra;ACBr_Integrador;$(DCC_UsePackage)</DCC_UsePackage>
@@ -83,10 +83,9 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <DCC_DcuOutput>.\dcu\$(Config)</DCC_DcuOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Build>9</VerInfo_Build>
+        <VerInfo_Build>10</VerInfo_Build>
         <Icon_MainIcon>img\Date_Time_32x32.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.9;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Release>0</VerInfo_Release>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.2.10;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -102,8 +101,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Build>4</VerInfo_Build>
         <Icon_MainIcon>img\Date_Time_32x32.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.4;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Release>0</VerInfo_Release>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.2.4;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -142,6 +140,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </DCCReference>
         <DCCReference Include="src\uSituacao.pas"/>
         <DCCReference Include="src\uPerfil.pas"/>
+        <DCCReference Include="src\uVersao.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
