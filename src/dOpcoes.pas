@@ -299,6 +299,7 @@ begin
         AdicionarDescricao(menuItem);
         AdicionarTeste(menuItem);
         AdicionarAnalise(menuItem);
+        AdicionarDesenvolvimento(menuItem);
 
         itemVersao.Add(menuItem);
         FMenuItems.Add(menuItem);
