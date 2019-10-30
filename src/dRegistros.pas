@@ -50,12 +50,12 @@ type
 
     procedure SetRegistroAtual(const Value: TInfoRegistro);
 
-    function GetTempo: Currency;
-    procedure AddRegistro;
+    function GetTempo(SegundosDesconto: integer): Currency;
+    procedure AddRegistro(SegundosDesconto: integer = 0);
     procedure TranslateGrid;
 
   public
-    procedure Parar;
+    procedure Parar(SegundosDesconto: integer = 0);
     procedure SaveGrid;
     procedure ContinuarSelecionado;
 
@@ -154,19 +154,19 @@ begin
 end;
 
 
-function TDmRegistros.GetTempo: Currency;
+function TDmRegistros.GetTempo(SegundosDesconto: integer): Currency;
 begin
-  Result := RoundTo(MinutesBetween(now, FRegistroAtual.inicio) / 60, - 2);
+  Result := RoundTo(MinutesBetween(IncSecond(now, -SegundosDesconto), FRegistroAtual.inicio) / 60, - 2);
 end;
 
 
-procedure TDmRegistros.Parar;
+procedure TDmRegistros.Parar(SegundosDesconto: integer);
 begin
   if FRodando then
-    AddRegistro;
+    AddRegistro(SegundosDesconto);
   FRodando := False;
   FRegistroAtual := default (TInfoRegistro);
-  FrmHoras.Timer1.Enabled := False;
+  FRegistroAtual.inicio := now;
   DmOpcoes.SetHints('Parado');
   DmOpcoes.Parar1.Enabled := False;
 
@@ -184,13 +184,13 @@ begin
 end;
 
 
-procedure TDmRegistros.AddRegistro;
+procedure TDmRegistros.AddRegistro(SegundosDesconto: integer);
 begin
   if not ClientDataSet1.Active then
     ClientDataSet1.Open;
 
   ClientDataSet1.Append;
-  ClientDataSet1tempo.Value := GetTempo;
+  ClientDataSet1tempo.Value := GetTempo(SegundosDesconto);
   ClientDataSet1tarefa.Value := FRegistroAtual.chamado;
   ClientDataSet1atividade.Value := Ord(FRegistroAtual.atividade);
   ClientDataSet1comentario.Value := FRegistroAtual.comentario.Replace('&', '');

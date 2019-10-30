@@ -1728,7 +1728,6 @@ object FrmHoras: TFrmHoras
     PixelsPerInch = 96
   end
   object Timer1: TTimer
-    Enabled = False
     OnTimer = Timer1Timer
     Left = 232
     Top = 326
