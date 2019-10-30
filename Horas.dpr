@@ -12,7 +12,8 @@ uses
   dSituacao in 'src\dSituacao.pas' {DataModule1: TDataModule},
   uSituacao in 'src\uSituacao.pas',
   uPerfil in 'src\uPerfil.pas',
-  uVersao in 'src\uVersao.pas';
+  uVersao in 'src\uVersao.pas',
+  dParado in 'src\dParado.pas' {DmParado: TDataModule};
 
 {$R *.res}
 
@@ -26,5 +27,6 @@ begin
   Application.CreateForm(TDmLembrete, DmLembrete);
   Application.CreateForm(TdmRegistrar, dmRegistrar);
   Application.CreateForm(TDmSituacao, DmSituacao);
+  Application.CreateForm(TDmParado, DmParado);
   Application.Run;
 end.
