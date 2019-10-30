@@ -37,6 +37,11 @@ uses
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
 
+const
+  C30_MIN = 2700;
+  C15_MIN = 0900;
+  C05_MIN = 0300;
+
 
 procedure TDmParado.Timer1Timer(Sender: TObject);
 var
@@ -58,11 +63,11 @@ begin
 
   FNotificando := True;
 
-  if FParado > 300 then
+  if (FParado > C05_MIN) and (FParado <= C15_MIN) then
     Notifica5
-  else if FParado > 900 then
+  else if (FParado > C15_MIN) and (FParado <= C30_MIN) then
     Notifica15
-  else if FParado > 2700 then
+  else if FParado > C30_MIN then
     Notifica30;
 
   FNotificando := False;
