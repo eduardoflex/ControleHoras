@@ -120,6 +120,7 @@ begin
   end;
 
   FItemSelecionado := TMenuItem(Sender);
+  SetTarefaSelecionada(FItemSelecionado.Parent.Caption.Replace('&', '').ToInteger);
 
   Registro := default (TInfoRegistro);
   Registro.inicio := now;
@@ -134,7 +135,6 @@ begin
   end;
 
   FItemSelecionado.Parent.Checked := True;
-  SetTarefaSelecionada(FItemSelecionado.Parent.Caption.Replace('&', '').ToInteger);
 
   if Assigned(FItemSelecionado.Parent.Items[0]) then
     SetHints(TAtividades(FItemSelecionado.Tag).ToString + ': ' + FTarefaSelecionada.ToString + ' (' +
