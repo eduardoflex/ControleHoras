@@ -6,7 +6,7 @@ uses
   System.SysUtils, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxGrid,
   dxDateRanges, cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData, cxSpinEdit, cxImageComboBox,
   Datasnap.DBClient, cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses, cxControls, cxGridCustomView,
-  System.Classes, uAtividade;
+  System.Classes, uAtividade, Vcl.Controls, System.Types;
 
 type
   TInfoRegistro = record
@@ -38,6 +38,9 @@ type
     procedure DataModuleCreate(Sender: TObject);
     procedure cxGridViewRepository1DBTableView1TcxGridDBDataControllerTcxDataSummaryFooterSummaryItems0GetText
       (Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean; var AText: string);
+    procedure cxGridViewRepository1DBTableView1tempoGetCellHint(Sender: TcxCustomGridTableItem;
+      ARecord: TcxCustomGridRecord; ACellViewInfo: TcxGridTableDataCellViewInfo; const AMousePos: TPoint;
+      var AHintText: TCaption; var AIsHintMultiLine: Boolean; var AHintTextRect: TRect);
 
   private const
     FILE_INI = 'Horas.grd';
@@ -50,12 +53,12 @@ type
 
     procedure SetRegistroAtual(const Value: TInfoRegistro);
 
-    function GetTempo(SegundosDesconto: integer): Currency;
-    procedure AddRegistro(SegundosDesconto: integer = 0);
+    function GetTempo(SegundosDesconto: Integer): Currency;
+    procedure AddRegistro(SegundosDesconto: Integer = 0);
     procedure TranslateGrid;
 
   public
-    procedure Parar(SegundosDesconto: integer = 0);
+    procedure Parar(SegundosDesconto: Integer = 0);
     procedure SaveGrid;
     procedure ContinuarSelecionado;
 
@@ -138,12 +141,27 @@ end;
 procedure TDmRegistros.cxGridViewRepository1DBTableView1TcxGridDBDataControllerTcxDataSummaryFooterSummaryItems0GetText
   (Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean; var AText: string);
 begin
-  case VarType(AValue) of
-    varCurrency, varDouble, varSmallint, varInteger, varShortInt, varWord, varInt64:
-      AText := FormatFloat('0.00', AValue);
+  if VarType(AValue) in [varCurrency, varDouble, varSmallint, varInteger, varShortInt, varWord, varInt64] then
+  begin
+    AText := FormatFloat('0.00', AValue);
+    AText := AText + FormatDateTime(' | hh:mm', - IncMinute(Date, AValue * 60));
+  end
   else
     AText := '';
-  end;
+end;
+
+
+procedure TDmRegistros.cxGridViewRepository1DBTableView1tempoGetCellHint(Sender: TcxCustomGridTableItem;
+  ARecord: TcxCustomGridRecord; ACellViewInfo: TcxGridTableDataCellViewInfo; const AMousePos: TPoint;
+  var AHintText: TCaption; var AIsHintMultiLine: Boolean; var AHintTextRect: TRect);
+begin
+  if VarType(ACellViewInfo.Value) in
+    [varCurrency, varDouble, varSmallint, varInteger, varShortInt, varWord, varInt64] then
+  begin
+    AHintText := AHintText + FormatDateTime('hh:mm', - IncMinute(Date, ACellViewInfo.Value * 60));
+  end
+  else
+    AHintText := '';
 end;
 
 
@@ -154,13 +172,13 @@ begin
 end;
 
 
-function TDmRegistros.GetTempo(SegundosDesconto: integer): Currency;
+function TDmRegistros.GetTempo(SegundosDesconto: Integer): Currency;
 begin
-  Result := RoundTo(MinutesBetween(IncSecond(now, -SegundosDesconto), FRegistroAtual.inicio) / 60, - 2);
+  Result := RoundTo(MinutesBetween(IncSecond(now, - SegundosDesconto), FRegistroAtual.inicio) / 60, - 2);
 end;
 
 
-procedure TDmRegistros.Parar(SegundosDesconto: integer);
+procedure TDmRegistros.Parar(SegundosDesconto: Integer);
 begin
   if FRodando then
     AddRegistro(SegundosDesconto);
@@ -184,7 +202,7 @@ begin
 end;
 
 
-procedure TDmRegistros.AddRegistro(SegundosDesconto: integer);
+procedure TDmRegistros.AddRegistro(SegundosDesconto: Integer);
 begin
   if not ClientDataSet1.Active then
     ClientDataSet1.Open;

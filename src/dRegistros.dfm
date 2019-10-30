@@ -54,6 +54,7 @@ object DmRegistros: TDmRegistros
         Properties.ImmediatePost = True
         Properties.Increment = 0.050000000000000000
         Properties.ZeroLargeIncrement = True
+        OnGetCellHint = cxGridViewRepository1DBTableView1tempoGetCellHint
         Width = 75
       end
       object cxGridViewRepository1DBTableView1tarefa: TcxGridDBColumn
