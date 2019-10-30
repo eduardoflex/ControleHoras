@@ -59,8 +59,6 @@ type
     dxBarLargeButton1: TdxBarLargeButton;
     dxBarManager1Bar4: TdxBar;
     dxRibbon1Tab1: TdxRibbonTab;
-
-    procedure FormShow(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Sair1Click(Sender: TObject);
     procedure btnRedmineCarregarClick(Sender: TObject);
@@ -74,9 +72,11 @@ type
     procedure Continuar1Click(Sender: TObject);
     procedure dxBarLargeButton1Click(Sender: TObject);
     procedure dxRibbon1TabChanging(Sender: TdxCustomRibbon; ANewTab: TdxRibbonTab; var Allow: Boolean);
+    procedure FormShow(Sender: TObject);
 
   private
     FCanClose: Boolean;
+    FCriado: Boolean;
 
     procedure SaveProperties;
 
@@ -186,12 +186,14 @@ end;
 
 procedure TFrmHoras.FormShow(Sender: TObject);
 begin
+  if FCriado then
+    Exit;
   cxGrid1Level1.GridView := DmRegistros.cxGridViewRepository1DBTableView1;
   cxGridPopupMenu1.PopupMenus[0].GridView := cxGrid1Level1.GridView;
   if VarType(edtRedmineToken.EditValue) <> varNull then
     DmOpcoes.Refresh1Click(Sender);
+  FCriado := True;
 end;
-
 
 procedure TFrmHoras.Sair1Click(Sender: TObject);
 begin
