@@ -86,8 +86,8 @@ begin
         DmRegistros.ClientDataSet1comentario.Value, DmRegistros.ClientDataSet1data.Value);
       DmRegistros.ClientDataSet1.Next;
     end;
-  finally
     DmRegistros.ClientDataSet1.EmptyDataSet;
+  finally
     DmRegistros.ClientDataSet1.EnableControls;
   end;
 end;
