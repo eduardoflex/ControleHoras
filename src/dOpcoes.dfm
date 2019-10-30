@@ -75,6 +75,7 @@ object DmOpcoes: TDmOpcoes
       object Reuniogeral1: TMenuItem
         Tag = 29
         Caption = 'Reuni'#227'o geral'
+        Hint = 'Reuni'#227'o geral'
         ImageIndex = 18
         OnClick = SemChamadoClick
       end
